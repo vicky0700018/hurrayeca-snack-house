@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- All store data lives in the browser: `src/lib/store.tsx` (React context + localStorage), seeded from `src/lib/seed.ts`. Why: the client wants a frontend-only demo that is easy to swap for a real backend later.
+- Built-in photos are referenced in data as `img:<name>` keys resolved by `src/lib/images.ts` from `.asset.json` CDN pointers. Why: saved localStorage data keeps working across rebuilds.
+- Admin pages are `src/routes/admin.*.tsx` under the `admin.tsx` layout, which guards access and owns the sidebar list. Why: one place for auth gating and navigation.
